@@ -1,146 +1,105 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/catiaspsilva/README-template">
-    <img src="images/gators.jpg" alt="Logo" width="150" height="150">
-  </a>
+# Project 1 – Large-scale Data Cleaning, Encoding, Exploration, and Predictive Modeling
 
-  <h3 align="center">README Template</h3>
+## Overview
 
-  <p align="center">
-    A README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/catiaspsilva/README-template/blob/main/images/docs.txt"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="#usage">View Demo</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Request Feature</a>
-  </p>
-</p>
+This project analyzes the NYC Yellow Taxi dataset to explore tipping behavior and build regression models to predict `tip_amount`.
 
+The workflow includes:
+- Data cleaning and preprocessing
+- Feature engineering
+- Exploratory data analysis
+- Linear Regression and Lasso modeling
+- Hyperparameter tuning
+- Deployment-style testing
 
+---
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#dependencies">Dependencies</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#authors">Authors</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
+## Dataset
 
+NYC Yellow Taxi trip records were used to analyze tipping behavior across time, location, and fare-related features.
 
+---
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## Repository Structure
 
-In this section you should describe your project, including any datasets you used and appropriate citations. You may refer to your project report or cite your paper for more detailed information.
+- `training.ipynb`  
+  Performs full preprocessing, model training, hyperparameter tuning (GridSearchCV), evaluation, and saves the tuned model.
 
-[Here goes the title with hyperlink](https://github.com/catiaspsilva/README-template)
+- `test.ipynb`  
+  Loads the saved model and performs inference only (no retraining).
 
-You can include tables or images to summarize your results when and if appropriate.
+- `best_lasso_model.pkl`  
+  Tuned Lasso regression model used for prediction.
 
-<!-- GETTING STARTED -->
-## Getting Started
+---
 
-In this section you should provide instructions on how to use this repository to recreate your project locally.
+## Environment (Important)
 
-### Dependencies
+This project was developed and tested using:
 
-Here, list all libraries, packages and other dependencies that need to be installed to run your project. Include library versions and how they should be installed if a special requirement is needed.
+- **UFRC HiPerGator**
+- **Python 3.10 kernel**
+- pandas
+- numpy
+- scikit-learn
+- joblib
 
-For example, this is how you would list them:
-* Transformers 4.8.0
-  ```sh
-  conda install -c conda-forge transformers
-  ```
-* OpenCV 4.5.2
-  ```sh
-  conda install -c conda-forge opencv
-  ```
-### Alternative: Export your Environment
+The teaching team will evaluate the project using the HyperGator UFRC Python 3.10 environment.
 
-Alternatively, you can export your Python working environment, push it to your project's repository and allow users to clone it locally. This way, anyone can install it and they will have all dependencies needed. Here is how you export a copy of your Python environment:
+No additional environment configuration is required when running on HyperGator.
 
-  ```sh
-  conda env export > requirements.yml
-  ```
+---
 
-The user will be able to recreate it using:
+## How to Run
 
-  ```sh
-  conda env create -f requirements.yml
-  ```
+### 1️ Training
 
-### Installation
+Open and run all cells in:
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/catiaspsilva/README-template.git
-   ```
-2. Setup (and activate) your environment
-  ```sh
-  conda env create -f requirements.yml
-  ```
+training.ipynb
 
-<!-- USAGE EXAMPLES -->
-## Usage
+This notebook:
+- Builds preprocessing pipelines
+- Trains Linear Regression and Lasso models
+- Performs hyperparameter tuning
+- Saves the tuned model using:
 
-Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.
+```python
+import joblib
+joblib.dump(best_lasso, "best_lasso_model.pkl")
+```
 
-Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+---
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### 2️ Testing (Deployment Style)
 
-<!-- ROADMAP -->
-## Roadmap
+Open and run:
 
-See the [open issues](https://github.com/catiaspsilva/README-template/issues) for a list of proposed features (and known issues).
+test.ipynb
 
-<!-- CONTRIBUTING -->
-## Contributing
+This notebook:
+- Loads the saved model
+- Recreates minimal feature engineering
+- Generates predictions using `.predict()`
+- Does NOT retrain the model
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+---
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Model Summary
 
+- Final Model: Lasso Regression  
+- Best alpha: 0.01  
+- Test R² ≈ 0.52  
+- 95% Confidence Interval ≈ [0.444, 0.580]  
 
-<!-- LICENSE -->
-## License
+The model explains approximately 52% of the variance in tipping behavior.
 
-Distributed under the MIT License. See `LICENSE` for more information.
+---
 
+## Author
 
-<!-- Authors -->
-## Authors
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Daniel Hwang  
+University of Florida
 
 
 <!-- ACKNOWLEDGEMENTS -->
