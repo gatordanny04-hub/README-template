@@ -1,161 +1,107 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/catiaspsilva/README-template">
-    <img src="images/gators.jpg" alt="Logo" width="150" height="150">
-  </a>
+# Project 3 - Artificial Neural Networks (Lung X-Ray Classification)
 
-  <h3 align="center">README Template</h3>
-
-  <p align="center">
-    A README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/catiaspsilva/README-template/blob/main/images/docs.txt"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="#usage">View Demo</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/catiaspsilva/README-template/issues">Request Feature</a>
-  </p>
-</p>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#dependencies">Dependencies</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#authors">Authors</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-In this section you should describe your project, including any datasets you used and appropriate citations. You may refer to your project report or cite your paper for more detailed information.
+This project focuses on multi-label classification of lung diseases using a Convolutional Neural Network (CNN) applied to chest X-ray images. The dataset used is ChestMNIST, which contains grayscale X-ray images labeled across 14 disease categories.
 
-[Here goes the title with hyperlink](https://github.com/catiaspsilva/README-template)
+The goal of this project is to build a deep learning model capable of predicting multiple diseases simultaneously from a single image. The model was trained using TensorFlow/Keras and evaluated using Binary Accuracy and AUC metrics.
 
-You can include tables or images to summarize your results when and if appropriate.
+The final model achieved:
+- Test Accuracy: 94.77%
+- Test AUC: 0.8296
 
-<!-- GETTING STARTED -->
+For detailed methodology and analysis, please refer to the project report.
+
+---
+
+## Built With
+
+- Python 3
+- TensorFlow / Keras
+- NumPy
+- Matplotlib
+
+---
+
 ## Getting Started
 
-In this section you should provide instructions on how to use this repository to recreate your project locally.
+To run this project locally, follow the steps below.
 
-### Dependencies
+---
 
-Here, list all libraries, packages and other dependencies that need to be installed to run your project. Include library versions and how they should be installed if a special requirement is needed.
+## Dependencies
 
-For example, this is how you would list them:
-* Transformers 4.8.0
-  ```sh
-  conda install -c conda-forge transformers
-  ```
-* OpenCV 4.5.2
-  ```sh
-  conda install -c conda-forge opencv
-  ```
-### Alternative: Export your Environment
+The following libraries are required:
 
-Alternatively, you can export your Python working environment, push it to your project's repository and allow users to clone it locally. This way, anyone can install it and they will have all dependencies needed. Here is how you export a copy of your Python environment:
+- Python 3.8+
+- TensorFlow 2.x
+- NumPy
+- Matplotlib
 
-  ```sh
-  conda env export > requirements.yml
-  ```
+You can install them using:
 
-The user will be able to recreate it using:
+```bash
+pip install tensorflow numpy matplotlib
 
-  ```sh
-  conda env create -f requirements.yml
-  ```
+## INstallation
 
-### Installation
+git clone https://github.com/YOUR_USERNAME/project-3-undergrad-gatordanny04-hub.git
+cd project-3-undergrad-gatordanny04-hub
+Usage
+Step 1: Dataset
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/catiaspsilva/README-template.git
-   ```
-2. Setup (and activate) your environment
-  ```sh
-  conda env create -f requirements.yml
-  ```
+Download the dataset from Canvas and place it in the root directory: chestmnist.npz
+Step 2: Train the Model
 
-<!-- USAGE EXAMPLES -->
-## Usage
+Run the training notebook:Training.ipynb
+This will:
 
-Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.
+preprocess the dataset
+train the CNN model
+save the trained model
 
-Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Output files:model_dataset1.keras
+best_model_dataset1.keras
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Step 3: Test the Model
 
-<!-- ROADMAP -->
-## Roadmap
+Run the test notebook:Test.ipynb
 
-See the [open issues](https://github.com/catiaspsilva/README-template/issues) for a list of proposed features (and known issues).
+This will:
 
-<!-- CONTRIBUTING -->
-## Contributing
+load the trained model
+evaluate performance on the test set
+generate predictions
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Results
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The model demonstrates strong performance across datasets.
+| Metric              | Value  |
+| ------------------- | ------ |
+| Training Accuracy   | 0.9492 |
+| Validation Accuracy | 0.9493 |
+| Test Accuracy       | 0.9477 |
+| Training AUC        | 0.8488 |
+| Validation AUC      | 0.8286 |
+| Test AUC            | 0.8296 |
 
+Roadmap
+Improve model performance with deeper architectures
+Apply transfer learning
+Use higher-resolution images
+Address class imbalance
+Authors
 
-<!-- LICENSE -->
-## License
+Daniel Hwang
+University of Florida
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Acknowledgements
+University of Florida (Canvas Course Materials)
+ChestX-ray14 Dataset (NIH)
+MedMNIST Benchmark
+TensorFlow Documentation
 
+REFERENCES
+D. Hwang, “Project 3 – Multi-Label Classification of Lung Diseases Using Convolutional Neural Networks on Chest X-Ray Images” GitHub repository, 2026. [Online]. Available: https://github.com/UF-AML-Spring-2026/project-3-undergrad-gatordanny04-hub.git.
+University of Florida, “ChestMNIST Dataset,” Canvas Course Files, 2026. Available: https://ufl.instructure.com/courses/555954/files/folder/Projects/Project%203?preview=103166351
 
-<!-- Authors -->
-## Authors
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-You can acknowledge any individual, group, institution or service.
-* [Catia Silva](https://faculty.eng.ufl.edu/catia-silva/)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-
-## Thank you
-
-<!-- If this is useful: [![Buy me a coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg)](https://www.buymeacoffee.com/catiaspsilva) -->
